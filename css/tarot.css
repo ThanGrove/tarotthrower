@@ -1,0 +1,343 @@
+body, #canvas {
+  background-color: #000000 !important;
+}
+
+#homeicon {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+}
+
+#soundicon {z-index: 3000;}
+
+#intro {
+	position: absolute;
+	top: 15%;
+	left: 10%;
+	width: 70%;
+	border: 3px outset silver;
+	background-color: beige;
+	color: #444;
+	padding: 8px;
+	z-index: 5000;
+}
+
+#intro .close {
+	float: right;
+	font-size: small;
+	font-style: italic;
+	margin-top: -50px;
+	cursor: pointer;
+	padding: 6px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#intro .close:hover {
+	background-color: #0482F3;
+	color: white;
+}
+
+div#position1, div#position2, div#position3, div#position4, div#position5,
+div#position6, div#position7, div#position8, div#position9, div#position10 {
+  position: absolute;
+  border: 2px dashed #F58000;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  z-index: 150;
+}
+
+.selected-card {
+	border-color: green !important;
+}
+
+div#drawncards {
+	position: absolute;
+  right: 5px;
+  bottom: 30px;
+  width: 100px;
+  height: 170px;
+  z-index: 50;
+}
+
+
+div#drawncards div.carddiv {
+  position: absolute;
+  right: 5px;
+  bottom: 30px;
+	width: 100px !important;
+  height: 170px !important;
+  z-index: 100;
+}
+
+
+div#drawncards div.carddiv img {
+  width: 100px;
+  height: 170px;
+}
+
+div#readings {
+	position: absolute;
+	top: 2px;
+	left: 760px;
+	width: 580px;
+	height: 455px;
+	border: 3px inset #006633;
+	overflow: auto;
+	color: #006633 !important;
+}
+
+#savelink {
+	float: right;
+	padding: 3px 10px;
+}
+
+#login {
+	position: absolute;
+	right: 14px;
+	padding-top: 3px;
+}
+
+#login h2 {
+	margin-top: 0px;
+	margin-bottom: 8px;
+}
+
+#login a {
+	color: white;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+#login a:hover {
+	color: #006600;
+	text-decoration: underline;
+}
+
+#ulinks {
+	width: 500px;
+	text-align: center;
+}
+
+#valmessage {
+	background: none repeat scroll 0 0 #F7EDC3;
+	color: #C10909 !important;
+	border: 2px solid #006633;
+	border-radius: 5px 5px 5px 5px;
+	font-size: 12px;
+	padding: 4px;
+	position: relative;
+	width: 270px;
+	z-index: 10000 !important;
+}
+
+#msgp {
+	text-align: center;
+	color: red;
+	margin-top: 0px;
+	margin-bottom: 6px;
+}
+
+.btn {
+  border: 1px solid #777777;
+  background: #002211;
+  color: white;
+  font: bold 11px 'Trebuchet MS';
+  padding: 1px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.closebtn {
+	position: absolute;
+	top: 0px;
+	right: 5px;
+	color: red;
+	cursor: pointer;
+}
+
+#instructions {
+	margin: 25px 8px 15px;
+	text-align: justify;
+}
+
+#instructions .dlinfo li {
+	list-style-type: none;
+}
+
+#instructions p {
+	margin-top: 0px;
+}
+
+#instructions p a, #savelink a {
+	color: #006600;
+	text-decoration: none;
+}
+
+#instructions p a:hover, #savelink a:hover, #login a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#instructions form table {
+	margin-left: 20px;
+}
+
+#instructions form table tr {
+	line-height: 160%;
+}
+
+td.label { /* had #instructions form */ 
+	font-weight: bold;
+	text-align: right;
+	padding-right: 8px;
+	color: #006633;
+	vertical-align: top;
+}
+
+#instructions form td span.txt, #login td {
+	color: #006633;
+}
+
+#instructions form table table.buttons {
+	width: 100%;
+	text-align: center;
+	margin-left: 0px;
+}
+
+#throwspecs {
+	width: 80%;
+	background: transparent;
+	margin-left: 15%;
+}
+
+#throwspecs table td {
+	color: #006633;
+}
+
+#startbubble {
+	position: absolute;
+	left: 1050px;
+	top: 305px;
+}
+
+div#readings ol li {
+	margin-top: 6px;
+	padding-right: 6px;
+	width: 98%;
+}
+
+div#readings ol li span.position {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+div#readings ol li span.card {
+	font-weight: bold;
+	font-style: italic;
+}
+
+div#drawn {
+	position: absolute;
+  top: 500px;
+	left: 1135px;
+  width: 100px;
+  height: 170px;
+}
+
+div#drawn img {
+	width: 100px;
+	height: 170px;
+}
+
+div#deck  {
+  position: absolute;
+  /*right: 5px;
+	bottom: 30px;*/
+	top: 500px;
+	left: 1244px;
+  width: 100px;
+  height: 170px;
+  z-index: 500;
+  background: url(../images/deck-sm.jpg) no-repeat 0 0;
+}
+
+.fillme {
+	border: "orange 2px dashed";
+}
+
+#controls {
+  position: absolute;
+  top: 90%;
+}
+
+#controls div {
+  display: inline;
+  margin-right: 8px;
+}
+
+#controls div .val {
+  height: 1.5em;
+  border: 1px dotted #777;
+  padding: 1px;
+}
+
+#messages {
+  position: relative;
+  top: 0px;
+  left: 6px;
+  font-style: italic;
+  font-size: small;
+}
+
+#popup {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	height: 670px;
+	width: 1000px;
+	overflow: auto;
+	border: 3px ridge silver;
+	padding: 5px 5px 10px 10px;
+	background: #f3fff3;
+	z-index: 3000;
+}
+
+#popup #closebtn {
+	height: 50px;
+	width: 50px;
+	float: right;
+}
+
+#popup #pophead {
+	width: 100%;
+}
+
+#popup #popcard img {
+	width: 180px !important;
+	border: 2px outset #151B54;
+	float: left;
+	margin-right: 30px;
+}
+
+#popup #revmean {
+	position: absolute;
+	top: 75px;
+	width: 375px;
+	right: 75px;
+}
+
+#overlay {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1300px;
+	height: 1000px;
+	background: transparent;
+	z-index: 800;
+}
+
+table.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
