@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include '../lib/php/db_connect.php';
 include 'functions.php';
 tarot_session_start();
 // 0 = login, 2 = register, 3 = check login status, 4 = error, 5  = logout, default = logout

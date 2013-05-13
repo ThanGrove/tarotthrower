@@ -1,6 +1,6 @@
 <?php
 
-include 'db_connect.php';
+include '../lib/php/db_connect.php';
 include 'functions.php';
 tarot_session_start();
 

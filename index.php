@@ -1,12 +1,13 @@
 <?php
     $domain = $_SERVER['SERVER_NAME'];
-    $home = (strpos($domain, 'virginia.edu') > -1)? "http://people.virginia.edu/~ndg8f/" : "http://thansweb/uva/";
-		include 'db_connect.php';
+    $home = (strpos($domain, 'virginia.edu') > -1)? "http://people.virginia.edu/~ndg8f/" : "/";
+		include '../lib/php/db_connect.php';
 		include 'functions.php';
 		tarot_session_start();
   ?>
 	<html lang="en">
   <head>
+  	<meta charset="UTF-8">
     <title>Tarot Thrower</title>
     <link href="css/tarot.css" rel="stylesheet" media="all" />
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
@@ -23,8 +24,9 @@
 
   </head>
   <body>
-	 <div id="homeicon">
+	 <div id="icons">
 			<a href="<?php echo $home; ?>" title="Back to Than's Web Page"><img src="images/home.png"/></a>
+			<a onclick="javascript: $('#intro').toggle();" title="Help" style="link"><img src="images/help-wht-circle.png" class="help-img" /></a>
 	 </div>
 		<div id="main">
 			<div id="intro" style="display: none;">
@@ -46,11 +48,13 @@
 				 layout of the cards that is meant to aid in understanding the past, present and future with regard to a
 				 particular question one has in mind. The layout represented here is the most commonly used one, called the
 				 Celtic Cross Spread. This is a series of 10 cards with the first two crossed in the middle. When you close
-				 this introduction page, you will see the outlines of the cards for this layout. Click on image of the
+				 this introduction page, you will see the outlines of the cards for this layout and a form into which you can enter your question. 
+				 If you wish to save your throws, then you need to login using the link in the upper-right corner. (Create an account, if 
+				 you do not already have one.) Enter your question and click "Begin!". You will then be instructed to click on the 
 				 deck in the bottom right hand corner of the screen, and a card will be flipped over and will float to the
 				 place in the spread where it belongs. The name of the position of the card, the cards title, and a brief
 				 interpretation will then appear in the box above the deck. Clicking on the deck thus ten times will fill out
-				 the spread and interpretations and the deck with then vanish. May it enlighten your day!</p>
+				 the spread and interpretations and the deck with then vanish.</p>
 			</div>
       <div id="canvas">
       </div>

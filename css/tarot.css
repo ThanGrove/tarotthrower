@@ -2,10 +2,15 @@ body, #canvas {
   background-color: #000000 !important;
 }
 
-#homeicon {
+#icons {
 	position: absolute;
 	top: 5px;
 	left: 10px;
+}
+
+#icons .help-img {
+	width: 18px;
+	vertical-align: top;	
 }
 
 #soundicon {z-index: 3000;}
@@ -15,10 +20,10 @@ body, #canvas {
 	top: 15%;
 	left: 10%;
 	width: 70%;
-	border: 3px outset silver;
-	background-color: beige;
-	color: #444;
-	padding: 8px;
+	background-color: #F5F5F5;
+    border: 5px ridge #A2A1A1;
+    color: #444444;
+    padding: 6px 12px;
 	z-index: 5000;
 }
 
@@ -136,24 +141,6 @@ div#readings {
 	color: red;
 	margin-top: 0px;
 	margin-bottom: 6px;
-}
-
-.btn {
-  border: 1px solid #777777;
-  background: #002211;
-  color: white;
-  font: bold 11px 'Trebuchet MS';
-  padding: 1px 8px;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.closebtn {
-	position: absolute;
-	top: 0px;
-	right: 5px;
-	color: red;
-	cursor: pointer;
 }
 
 #instructions {
@@ -327,6 +314,7 @@ div#deck  {
 	right: 75px;
 }
 
+/** General Styles **/
 #overlay {
 	position: absolute;
 	top: 0px;
@@ -340,4 +328,30 @@ div#deck  {
 table.centered {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+a.link {
+	cursor: pointer;
+}
+
+.btn {
+  border: 1px solid #777777;
+  background: #002211;
+  color: white;
+  font: bold 11px 'Trebuchet MS';
+  padding: 1px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.closebtn {
+	position: absolute;
+	top: 0px;
+	right: 5px;
+	color: red;
+	cursor: pointer;
+}
+
+p { 
+	text-align: justify;
 }
