@@ -85,7 +85,7 @@
 								$qname = $_SESSION['username'];
 						}
 				 ?>
-				 <form id="metadataform" action="savedata.php" method="POST">
+				 <form id="metadataform" action="" method="POST">
 						<table>
 							 <tr>
 									<td class="label">Querent&rsquo;s Name:</td>
@@ -109,7 +109,7 @@
 							 <!-- Hidden Row for Card info -->
 							 <tr style="display: none;">
 								<td colspan="2">
-										<ul id="datastore"></ul>
+										<div id="datastore"></div>
 								</td>
 							 </tr>
 							 <tr>

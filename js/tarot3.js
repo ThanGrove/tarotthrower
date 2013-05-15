@@ -36,22 +36,7 @@ $(document).ready(function() {
 // Function called from div#savelink <a> link appears when layout is finished
 // see end of Layout.placeCard ~line 245
 function saveThrow() {
-  var sa = $("#metadataform").serializeArray();
-  jdata = {};
-  for (var n in sa) {
-   jdata[sa[n].name] = sa[n].value;
-  }
-  json = JSON.stringify(jdata);
-  // Send form info as ajax call
-  $.ajax({
-    url: "savedata.php",
-    type: "POST",
-    data: "tdata=" + jdata,
-    // 
-    success: function(resp) {
-      
-    }
-  });
+  
 }
 
 // the Deck Object 
@@ -371,5 +356,45 @@ function processForm() {
 }
 
 function writedata(k, v) {
-  $('#datastore').append('<input type="text" name="' + k + '" value="' + v + '" />');
+  $('#datastore').append('<input class="tdata" type="text" name="' + k + '" value="' + v + '" />');
+}
+
+function savethrow() {
+	var iels = $('#datastore input.tdata');
+	// Combine throw data into a single field
+	var del = $('#datastore').after('<input type="hidden" name="jsondata" />').next();
+	var tjson = { positions: [] };
+	iels.each(function() {
+		var el = $(this);
+		var elname = el.attr('name');
+		var elval = el.attr('value');
+		if (elname.indexOf('pos') == 0) {
+			var pn = elname.substr(3);
+			if (!isNaN(pn)) {
+				tjson.positions[parseInt(pn)] = elval;
+			} else {
+				console.log("Error in assigning card index to json in tarot3.js!");
+			}
+		} else {
+			tjson[elname] = elval;
+		}
+	});
+	tjson = JSON.stringify(tjson);
+	$('#datastore').remove();
+	var sa = $("#metadataform").serializeArray();
+	  jdata = {};
+	  for (var n in sa) {
+	   jdata[sa[n].name] = sa[n].value;
+	  }
+	  jdata = JSON.stringify(jdata);
+	  // Send form info as ajax call
+	  $.ajax({
+	    url: "savedata.php",
+	    type: "POST",
+	    data: "json=" + jdata,
+	    success: function(resp) {
+	      console.info("Success!");
+	      console.info(resp);
+	    }
+	  });
 }
