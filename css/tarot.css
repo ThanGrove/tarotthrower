@@ -314,16 +314,27 @@ div#deck  {
 	right: 75px;
 }
 
-/** General Styles **/
+#usets {
+	margin: 3% 10%;
+	padding: 0px 12px;
+	height: 80%;
+	width: 80%;
+	border: ridge 4px silver;
+	background: white none;
+	z-index: 2000 !important;
+}
+
 #overlay {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 1300px;
-	height: 1000px;
+	width: 100%;
+	height: 100%;
 	background: transparent;
 	z-index: 800;
 }
+
+/** General Styles **/
 
 table.centered {
 	margin-left: auto;
@@ -355,3 +366,4 @@ a.link {
 p { 
 	text-align: justify;
 }
+

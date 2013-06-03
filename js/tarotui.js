@@ -37,7 +37,7 @@ $(document).ready(function() {
     console.info("Need to write load throw code, after save code is done!");
   });
   $("a#usersettings").live('click', function() {
-    console.info("Need to write User settings page");
+    userSettings();
   });
   $("a#logoutlink").live('click', function() {
     $.ajax({
@@ -54,7 +54,12 @@ $(document).ready(function() {
 
 /* Page Manipulation Functions */
 function showIntro() {
-  $('#intro').fadeIn();
+  if ($('#intro').is(':hidden')) {
+  	$('#intro').fadeIn();
+  } else {
+  	$('#intro').fadeOut();
+  }
+  
   return false;
 }
 
@@ -201,7 +206,7 @@ function validateForm(kind) {
  *    Calls login.php?mode=3
  */
 function checkLoginStatus() {
-  getUser = (typeof(getUser) == "undefined")? false : true;
+  //getUser = (typeof(getUser) == "undefined")? false : true;
   $.ajax({
     url: "login.php",
     type: "POST",
@@ -232,4 +237,14 @@ function checkLoginStatus() {
       }
     }
   });
+}
+
+function userSettings() {
+	$("#overlay").before('<div id="usets" style="display: none;"></div>');
+	$('#usets').load(window.location.href + 'user.php', function() {
+		$('#overlay').show();
+		$('#overlay').bind('click', function() { $('#overlay, #usets').fadeOut('fast', function() { $('#usets').remove(); $('#main').fadeIn(); }); });
+		$('#usets').fadeIn();
+		$('#main').fadeOut();
+	});
 }
