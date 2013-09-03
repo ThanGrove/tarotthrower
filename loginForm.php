@@ -140,7 +140,7 @@ function registerSuccessMessage($result) {
   <h2>Success!</h2>
   <p>Congratulations! You have successfully registered for an account with the Tarot Thrower!</p>
 <?php
-  timeoutScript();
+  timeoutScript(TRUE);
 }
 
 function logoutSuccessMessage() {

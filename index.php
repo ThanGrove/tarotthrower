@@ -70,72 +70,73 @@
 					general questions or seek advice from the tarot, as it is usually difficult to interpret throws for questions seeking
 					a specific type of answer, such as yes or no and so forth.
 			 </p>-->
-			 </div>
-			 <div style="text-align: center;">
-				 <h2 class="title">Welcome to the Tarot Thrower</h2>
-				 <p>Enter your question or concern in the space below. Then, press the begin button:</p>
-				 <ul class="dlinfo">
-						<li><strong>Deck: </strong> <a href="http://en.wikipedia.org/wiki/Rider-Waite_tarot_deck"
-						target="_blank">Waite-Smith</a></li>
-						<li><strong>Layout: </strong> <a href="http://www.learntarot.com/ccross.htm"
-						target="_blank">Celtic Cross Spread</a></li>
-				 </ul>
-			 </div>
-			 <?php
-					$qname = "Anonymous";
-					if (isset($_SESSION['username'])) {
-							$qname = $_SESSION['username'];
-					}
-			 ?>
-			 <form id="metadataform" action="" method="POST">
-					<table>
-						 <tr>
-								<td class="label">Querent&rsquo;s Name:</td>
-								<td><span class="txt"><? echo $qname; ?></span>
-											<input type="hidden" size="50" name="querent" id="qname"
-													 value="<?php echo $qname; ?>"
-													/>
-								</td>
-						 </tr>
-						 <tr>
-								<td class="label">Date:</td>
-								<td id="date-cell">
-									 <span class="txt"></span>
-									 <input type="hidden" name="qdate" value="" id="qdate" />
-								</td>
-						 </tr>
-						 <tr>
-								<td class="label">Question:</td>
-								<td><textarea cols="44" rows="10" name="qtext" id="qtext" ></textarea></td>
-						 </tr>
-						 <!-- Hidden Row for Card info -->
-						 <tr style="display: none;">
-							<td colspan="2">
-									<div id="datastore"></div>
-							</td>
-						 </tr>
-						 <tr>
-								<td>&nbsp;</td>
-								<td >
-									 <table class="buttons">
-											<tr>
-													<td><input type="button" value="Begin!"
-																		 onclick="javascript: processForm();" class="btn"/>&nbsp;
-													<input type="reset" value="Reset" class="btn"/></td>
-													<!--<td><input type="button" value="Load"/></td>-->
-													<td>&nbsp;</td>
-											</tr>
-									 </table>
-								</td>
-						 </tr>
-					</table>
-			 </form>
+			 
+  			 <div style="text-align: center;">
+  				 <h2 class="title">Welcome to the Tarot Thrower</h2>
+  				 <p>Enter your question or concern in the space below. Then, press the begin button:</p>
+  				 <ul class="dlinfo">
+  						<li><strong>Deck: </strong> <a href="http://en.wikipedia.org/wiki/Rider-Waite_tarot_deck"
+  						target="_blank">Waite-Smith</a></li>
+  						<li><strong>Layout: </strong> <a href="http://www.learntarot.com/ccross.htm"
+  						target="_blank">Celtic Cross Spread</a></li>
+  				 </ul>
+  			 </div>
+  			 <?php
+  					$qname = "Anonymous";
+  					if (isset($_SESSION['username'])) {
+  							$qname = $_SESSION['username'];
+  					}
+  			 ?>
+  			 <form id="metadataform" action="" method="POST">
+  					<table>
+  						 <tr>
+  								<td class="label">Querent&rsquo;s Name:</td>
+  								<td><span class="txt"><? echo $qname; ?></span>
+  											<input type="hidden" size="50" name="querent" id="qname"
+  													 value="<?php echo $qname; ?>"
+  													/>
+  								</td>
+  						 </tr>
+  						 <tr>
+  								<td class="label">Date:</td>
+  								<td id="date-cell">
+  									 <span class="txt"></span>
+  									 <input type="hidden" name="qdate" value="" id="qdate" />
+  								</td>
+  						 </tr>
+  						 <tr>
+  								<td class="label">Question:</td>
+  								<td><textarea cols="44" rows="10" name="qtext" id="qtext" ></textarea></td>
+  						 </tr>
+  						 <!-- Hidden Row for Card info -->
+  						 <tr style="display: none;">
+  							<td colspan="2">
+  									<div id="datastore"></div>
+  							</td>
+  						 </tr>
+  						 <tr>
+  								<td>&nbsp;</td>
+  								<td >
+  									 <table class="buttons">
+  											<tr>
+  													<td><input type="button" value="Begin!"
+  																		 onclick="javascript: processForm();" class="btn"/>&nbsp;
+  													<input type="reset" value="Reset" class="btn"/></td>
+  													<!--<td><input type="button" value="Load"/></td>-->
+  													<td>&nbsp;</td>
+  											</tr>
+  									 </table>
+  								</td>
+  						 </tr>
+  					</table>
+  			 </form>
+      </div>
 			<div id="throwspecs" style="display: none;"></div>
 				<ol>
 						
 				</ol>
 			</div>
-			<div id="startbubble" style="display: none;"><img src="images/tarot-start-bubble2.png" /></div>
+			<div id="startbubble" style="display: none;"><img src="images/tarot-start-bubble3.png" /></div>
 			<div id="drawn"><img src="images/cardpad.png" /></div>
       		<div id="deck" ></div>
       </div>

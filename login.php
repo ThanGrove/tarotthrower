@@ -75,6 +75,14 @@ function doRegister() {
        $insert_stmt->bind_param('ssss', $uname, $email, $password, $random_salt); 
        // Execute the prepared query.
        $insert_stmt->execute();
+       setUserCredentials($mysqli->insert_id, $uname, $password);
+      
+       /*sif($res == "success") {
+          log_event('login', $mysqli);
+          console.info("logged in");
+       } else {
+          console.info("not logged in");
+       }*/
        header('Location: ./loginForm.php?type=3');
     } else {
       doError("mysql", $mysqli->errno, $mysqli->error);

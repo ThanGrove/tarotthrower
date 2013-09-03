@@ -48,6 +48,17 @@ $(document).ready(function() {
       }
     })
   });
+  
+  // Enable enter to submit form from password
+  $('#signin #pwd').live('keypress', function(e) {
+  	if (e.which && e.which == 13) {
+        $('#loginsubmitbtn').click();
+        return false;
+    } else {
+        return true;
+    }
+  });
+  
 });
 
 
@@ -241,7 +252,13 @@ function checkLoginStatus() {
 
 function userSettings() {
 	$("#overlay").before('<div id="usets" style="display: none;"></div>');
-	$('#usets').load(window.location.href + 'user.php', function() {
+	var mypath = window.location.pathname;
+	var pthpts = mypath.split('/');
+	if (pthpts[pthpts.length - 1].indexOf('.') > -1) {
+		pthpts.pop();
+		mypath = pthpts.join('/') + '/';
+	}
+	$('#usets').load(mypath + 'user.php', function() {
 		$('#overlay').show();
 		$('#overlay').bind('click', function() { $('#overlay, #usets').fadeOut('fast', function() { $('#usets').remove(); $('#main').fadeIn(); }); });
 		$('#usets').fadeIn();
