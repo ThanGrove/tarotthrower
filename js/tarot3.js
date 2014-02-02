@@ -36,7 +36,36 @@ $(document).ready(function() {
 // Function called from div#savelink <a> link appears when layout is finished
 // see end of Layout.placeCard ~line 245
 function saveThrow() {
-  
+  var iels = $('#datastore input.tdata');
+  // Combine throw data into a single field
+  var del = $('#datastore').after('<input type="hidden" name="jsondata" />').next();
+  var tjson = { positions: [] };
+  iels.each(function() {
+    var el = $(this);
+    var elname = el.attr('name');
+    var elval = el.attr('value');
+    if (elname.indexOf('pos') == 0) {
+      var pn = elname.substr(3);
+      if (!isNaN(pn)) {
+        tjson.positions[parseInt(pn)] = elval;
+      } else {
+        console.log("Error in assigning card index to json in tarot3.js!");
+      }
+    } else {
+      tjson[elname] = elval;
+    }
+  });
+  tjson = JSON.stringify(tjson);
+  console.info(tjson);
+  // Send form info as ajax call
+  $.ajax({
+    url: "savedata.php",
+    type: "POST",
+    data: "json=" + tjson,
+    success: function(resp) {
+      console.info(resp);
+    }
+  });
 }
 
 // the Deck Object 
@@ -71,19 +100,16 @@ var Deck = {
       this.cards.push(this.makeCard(i, data.cards[i]));
     }
     this.shuffle();
-    $("#deck").click(function() {
-      Deck.drawCard();
-    });
+    this.setClick(true);
     writedata('deckname', this.name);
     this.ready = true;
   },
   
   // Create a card object from the data 
   makeCard : function(n, cdata) {
-    title = cdata[0]
+    title = cdata[0];
     if(cdata[2] == 'Trumps') {
       title = cdata[1].toRomanNumeral() + '. ' + cdata[0];
-      //console.info('Title: ' + title);
     } else {
       title = cdata[0] + ' of ' + cdata[2];
     }
@@ -95,6 +121,16 @@ var Deck = {
       "upright" : true,
       "meaning" : cdata[3],
       "image" : decksbase + this.name.toLowerCase() + '/' + this.imageLoc + '/' + cdata[4]
+    };
+  },
+  
+  setClick : function(doit) {
+    if(doit) {
+      $("#deck").click(function() {
+        Deck.drawCard();
+      });
+    } else {
+      $("#deck").unbind('click');
     }
   },
   
@@ -215,10 +251,11 @@ var Layout = {
   },
   
   placeCard : function(card) {
+    Deck.setClick(false);
     var pos = this.positions[this.posIndex];
     pos.card = card;
     var oval = (!pos.card.upright)? "R":"";
-    writedata('pos' + this.posIndex, card.id + oval);
+    writedata('pos' + this.posIndex, card.id + oval); 
     $('#drawn').animate({
         top : "-=" + (drawnTop - pos.top) + "px",
         left : "-=" + (drawnLeft - pos.left) + "px"
@@ -249,8 +286,8 @@ var Layout = {
           setTimeout('Deck.hide()',5000);
           $("#deck").unbind('click');
           $("#savethrowlink").show();
-          //$("#readings").prepend('<div id="savelink"><a href="#" onclick="javascript:savethrow();">Save Throw</a></div>');
         }
+        Deck.setClick(true);
     });
     this.posIndex++;
   },
@@ -290,7 +327,7 @@ var Layout = {
   },
   
   writeInterpretation: function(pos) {
-    var li = '<li id="' + pos + '-desc"><span class="position" title="' + pos.meaning + '">' + pos.title + ':</span> <span class="card">' + pos.card.title;
+    var li = '<li id="' + pos.name + '-desc"><span class="position" title="' + pos.meaning + '">' + pos.title + ':</span> <span class="card">' + pos.card.title;
     if(!pos.card.upright) {  li += ' (<a title="A reversed card can indicate:  1. a negative or unhealthy manifestation of the cards meaning, 2. one is unconscious of the cards energy, 3. the energy or force represented by the card is imperfectly manifested, or 4. the opposite of the cards normal meaning.">rev</a>)'; }
     li += ' </span> = ' + pos.card.meaning + '</li>';
     $('#readings ol').append(li);
@@ -350,7 +387,10 @@ function processForm() {
   var qdate = $("#qdate").val();
   var qtext = $("#qtext").val();
   Layout.setMetadata(qname,qdate,qtext);
-  Deck.shuffle(qtext);
+  writedata('qname', qname);
+  writedata('qdate', qdate);
+  writedata('qtext', qtext);
+  Deck.shuffle(qname + qdate + qtext);
   $('#instructions, #ulinks').fadeOut();
   $('#startbubble, #throwspecs, #resetlink').fadeIn();
 }
@@ -359,42 +399,3 @@ function writedata(k, v) {
   $('#datastore').append('<input class="tdata" type="text" name="' + k + '" value="' + v + '" />');
 }
 
-function savethrow() {
-	var iels = $('#datastore input.tdata');
-	// Combine throw data into a single field
-	var del = $('#datastore').after('<input type="hidden" name="jsondata" />').next();
-	var tjson = { positions: [] };
-	iels.each(function() {
-		var el = $(this);
-		var elname = el.attr('name');
-		var elval = el.attr('value');
-		if (elname.indexOf('pos') == 0) {
-			var pn = elname.substr(3);
-			if (!isNaN(pn)) {
-				tjson.positions[parseInt(pn)] = elval;
-			} else {
-				console.log("Error in assigning card index to json in tarot3.js!");
-			}
-		} else {
-			tjson[elname] = elval;
-		}
-	});
-	tjson = JSON.stringify(tjson);
-	$('#datastore').remove();
-	var sa = $("#metadataform").serializeArray();
-	  jdata = {};
-	  for (var n in sa) {
-	   jdata[sa[n].name] = sa[n].value;
-	  }
-	  jdata = JSON.stringify(jdata);
-	  // Send form info as ajax call
-	  $.ajax({
-	    url: "savedata.php",
-	    type: "POST",
-	    data: "json=" + jdata,
-	    success: function(resp) {
-	      console.info("Success!");
-	      console.info(resp);
-	    }
-	  });
-}

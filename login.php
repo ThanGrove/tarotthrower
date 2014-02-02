@@ -1,5 +1,5 @@
 <?php
-include '../lib/php/db_connect.php';
+include 'db_connect.php';
 include 'functions.php';
 tarot_session_start();
 // 0 = login, 2 = register, 3 = check login status, 4 = error, 5  = logout, default = logout
@@ -75,21 +75,16 @@ function doRegister() {
        $insert_stmt->bind_param('ssss', $uname, $email, $password, $random_salt); 
        // Execute the prepared query.
        $insert_stmt->execute();
-       setUserCredentials($mysqli->insert_id, $uname, $password);
-      
-       /*sif($res == "success") {
-          log_event('login', $mysqli);
-          console.info("logged in");
-       } else {
-          console.info("not logged in");
-       }*/
-       header('Location: ./loginForm.php?type=3');
+       if($insert_stmt->affected_rows == -1) {
+         doError("mysql", $insert_stmt->errno, $insert_stmt->error);
+       } else { 
+        setUserCredentials($mysqli->insert_id, $uname, $password);
+        header('Location: ./loginForm.php?type=3&msg=usercredset&mii=' . $mysqli->insert_id);
+       } 
     } else {
-      doError("mysql", $mysqli->errno, $mysqli->error);
-    }
-  } else {
-    doError("postvar");
-  } 
+      doError("postvar");
+    } 
+  }
 }
 
 function doLogout() {
@@ -122,6 +117,7 @@ function doError($en = "default", $enum = NULL, $emsg = NULL) {
   global $mysqli;
   log_event("Error: $en", $mysqli);
   $ecode = '';
+  $tval = 4;
   switch($en) {
     case "badpass":
       $ecode = '1';
@@ -130,6 +126,7 @@ function doError($en = "default", $enum = NULL, $emsg = NULL) {
       $ecode = '2';
       break;
     case "mysql":
+      if($enum == 1062) { $emsg = 'That e-mail is already registered. Only one user per e-mail please.'; }
       $ecode = '3&enum=' . $enum . '&emsg=' . $emsg;
       break;
     case "nouser":
@@ -141,7 +138,7 @@ function doError($en = "default", $enum = NULL, $emsg = NULL) {
     default:
       $ecode = '0';
   }
-  header('Location: ./loginForm.php?type=4&err=' . $ecode);
+  header('Location: ./loginForm.php?type=' . $tval . '&err=' . $ecode);
 }
 
 ?>

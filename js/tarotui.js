@@ -140,6 +140,7 @@ function toggleLoginForm(mode) {
       $('#overlay').show();
       // Load login form into login div. type=2 (new) is the signup form.
       $('#login').load('loginForm.php?type=' + logintype);
+      $('#login').height('auto');
     });
   });
 }
@@ -190,7 +191,7 @@ function validateForm(kind) {
   var retobj = {
     'valid': true,
     'msg': ''
-  }
+  };
   var uname = $('#uname').val();
   if(typeof(uname) != "string" || uname == "" || uname.match(/[^\d\w \,\.\-\_]/)) {
     retobj.valid = false;
@@ -243,7 +244,7 @@ function checkLoginStatus() {
         for(var n in jobj.links) {
           la.push('<a id="' + n + '">' + jobj.links[n] + '</a>');
         }
-        lhtml += la.join(' | ') + '</div><div id="resetlink" style="display: none;"><div id="savethrowlink" style="display: none;"><a onclick="javascript: savethrow();">Save Throw</> | </div><a onclick="javascript: window.location.reload();" class="link">Reset</a></div>';
+        lhtml += la.join(' | ') + '</div><div id="resetlink" style="display: none;"><div id="savethrowlink" style="display: none;"><a onclick="javascript: saveThrow();">Save Throw</> | </div><a onclick="javascript: window.location.reload();" class="link">Reset</a></div>';
         lel.html(lhtml);
       }
     }

@@ -1,7 +1,7 @@
 <?php
     $domain = $_SERVER['SERVER_NAME'];
     $home = (strpos($domain, 'virginia.edu') > -1)? "http://people.virginia.edu/~ndg8f/" : "/";
-		include '../lib/php/db_connect.php';
+		include 'db_connect.php';
 		include 'functions.php';
 		tarot_session_start();
   ?>

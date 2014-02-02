@@ -1,6 +1,6 @@
 <?php
 
-include '../lib/php/db_connect.php';
+include 'db_connect.php';
 include 'functions.php';
 tarot_session_start();
 
@@ -91,13 +91,15 @@ function loginSuccessMessage() {
   timeoutScript(TRUE);
 }
 
-function registerForm() {
+function registerForm($msg='') {
   closeButton();
   ?>
     <h2>Sign Up for Tarot Thrower</h2>
     <p>You can create an account in order to save your throws and review them in the future.
     To do so, please enter the following information: </p>
-    <p id="msgp" style="display: none;"></p>
+     <p id="msgp"
+        <? if (strlen($msg) == 0) { echo 'style="display: none;"'; } ?>
+      ><? echo $msg ?></p>
     <form id="signup" method="post" >
       <table>
         <tr>
@@ -134,7 +136,7 @@ function registerForm() {
 <?php
 }
 
-function registerSuccessMessage($result) {
+function registerSuccessMessage() {
   closeButton();
 ?>
   <h2>Success!</h2>
@@ -187,7 +189,11 @@ function errorMessage() {
     $msg = "Incorrect post variables sent!";
     break;    
  }
- loginForm($msg);
+ if(isset($_GET['enum']) & $err == 3) {
+   registerForm($msg); 
+ } else { 
+   loginForm($msg);
+ }
 }
 
 function closeButton() {

@@ -1,0 +1,7 @@
+
+# Ignore default text files
+robots.txt
+
+# Ignore everything but the "sites" folder ( for non core developer )
+.htaccess
+db_connect.php

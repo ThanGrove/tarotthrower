@@ -101,6 +101,7 @@ div#readings {
 	position: absolute;
 	right: 14px;
 	padding-top: 3px;
+	height: auto;
 }
 
 #login h2 {
