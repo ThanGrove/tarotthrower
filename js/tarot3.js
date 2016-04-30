@@ -29,44 +29,9 @@ $(document).ready(function() {
   var dstr = getDate();
   $("#qdate").attr("value",dstr);
   $("#date-cell span.txt").text(dateToString(dstr));
-  checkLoginStatus();
+  //checkLoginStatus();
   
 });
-
-// Function called from div#savelink <a> link appears when layout is finished
-// see end of Layout.placeCard ~line 245
-function saveThrow() {
-  var iels = $('#datastore input.tdata');
-  // Combine throw data into a single field
-  var del = $('#datastore').after('<input type="hidden" name="jsondata" />').next();
-  var tjson = { positions: [] };
-  iels.each(function() {
-    var el = $(this);
-    var elname = el.attr('name');
-    var elval = el.attr('value');
-    if (elname.indexOf('pos') == 0) {
-      var pn = elname.substr(3);
-      if (!isNaN(pn)) {
-        tjson.positions[parseInt(pn)] = elval;
-      } else {
-        console.log("Error in assigning card index to json in tarot3.js!");
-      }
-    } else {
-      tjson[elname] = elval;
-    }
-  });
-  tjson = JSON.stringify(tjson);
-  console.info(tjson);
-  // Send form info as ajax call
-  $.ajax({
-    url: "savedata.php",
-    type: "POST",
-    data: "json=" + tjson,
-    success: function(resp) {
-      console.info(resp);
-    }
-  });
-}
 
 // the Deck Object 
 var Deck = {

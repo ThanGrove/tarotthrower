@@ -13,6 +13,11 @@ body, #canvas {
 	vertical-align: top;	
 }
 
+#login .help-img {
+    width: 18px;
+    vertical-align: top;    
+}
+
 #soundicon {z-index: 3000;}
 
 #intro {
@@ -315,7 +320,7 @@ div#deck  {
 	right: 75px;
 }
 
-#usets {
+.infopop {
 	margin: 3% 10%;
 	padding: 0px 12px;
 	height: 80%;
@@ -335,6 +340,29 @@ div#deck  {
 	z-index: 800;
 }
 
+#savethrowlink {
+  white-space: nowrap;
+}
+
+#resetlink {
+  display: inline;
+}
+
+#titleprompt {
+  color: antiquewhite;
+  background: black;
+  padding: 6px 10px;
+  position: relative;
+  border: 3px groove lightgrey;
+}
+
+#titleprompt p {
+  margin: 0px;
+}
+
+#titleprompt input[type=button] {
+  margin: 8px 0px 3px 85%;
+}
 /** General Styles **/
 
 table.centered {

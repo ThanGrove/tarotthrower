@@ -1,14 +1,16 @@
 <?php
     $domain = $_SERVER['SERVER_NAME'];
     $home = (strpos($domain, 'virginia.edu') > -1)? "http://people.virginia.edu/~ndg8f/" : "/";
-		include 'db_connect.php';
-		include 'functions.php';
-		tarot_session_start();
+		/*include 'db_connect.php';*/
+		//include 'functions.php';
+		//tarot_session_start();
   ?>
 	<html lang="en">
   <head>
   	<meta charset="UTF-8">
     <title>Tarot Thrower</title>
+     <!-- Favicon -->
+     <link rel='shortcut icon' href='<?php print $home; ?>imgs/favicon2.ico' type='image/x-icon'/ >
     <link href="css/tarot.css" rel="stylesheet" media="all" />
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.17.min.js"></script>
@@ -25,8 +27,7 @@
   </head>
   <body>
 	<div id="icons">
-		<a href="<?php echo $home; ?>" title="Back to Than's Web Page"><img src="images/home.png"/></a>
-		<a onclick="javascript: showIntro();" title="Tarot Thrower Help" style="link"><img src="images/help-wht-circle.png" class="help-img" /></a>
+		<a href="<?php echo $home; ?>" title="Back to Than's Home Page"><img src="../imgs/tgbrand.png" width="20"/></a>
 	</div> <!-- End #icons -->
 	<div id="main">
 		<div id="intro" style="display: none;">
@@ -59,7 +60,7 @@
 	    <div id="canvas">
 	    </div>
 		<div id="readings">
-			<div id="login"><a onclick="javascript: toggleLoginForm();">Login</a></div>
+    		    <div id="login"><a onclick="javascript: showIntro();" title="Tarot Thrower Help" style="link"><img src="images/help-wht-circle.png" class="help-img" /></a></div>
 		  	<div id="instructions">
 			 <!--<p>Welcome to Than&rsquo;s Tarot Thrower. This page will help you to do a Tarot &ldquo;throw&rdquo;, or spread, in
 			    response to a question of your choice. The default deck used is the <a href="http://en.wikipedia.org/wiki/Rider-Waite_tarot_deck"
@@ -72,7 +73,7 @@
 			 </p>-->
 			 
   			 <div style="text-align: center;">
-  				 <h2 class="title">Welcome to the Tarot Thrower</h2>
+  				 <h2 class="title">Welcome to Than&rsquo;s Tarot Thrower</h2>
   				 <p>Enter your question or concern in the space below. Then, press the begin button:</p>
   				 <ul class="dlinfo">
   						<li><strong>Deck: </strong> <a href="http://en.wikipedia.org/wiki/Rider-Waite_tarot_deck"
@@ -83,9 +84,7 @@
   			 </div>
   			 <?php
   					$qname = "Anonymous";
-  					if (isset($_SESSION['username'])) {
-  							$qname = $_SESSION['username'];
-  					}
+  					
   			 ?>
   			 <form id="metadataform" action="" method="POST">
   					<table>

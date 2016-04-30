@@ -12,6 +12,8 @@
  *        
  */
 
+include_once 'db_connect.php';
+
 date_default_timezone_set('America/New_York');
 
 function tarot_session_start() {
@@ -27,7 +29,8 @@ function tarot_session_start() {
   session_regenerate_id(true); // regenerated the session, delete the old one.     
 }
 
-function tarot_login($uname, $password, $mysqli) {
+function tarot_login($uname, $password) {
+    global $mysqli;
   // Using prepared Statements means that SQL injection is not possible. 
   if ($stmt = $mysqli->prepare("SELECT id, uname, pwd, salt FROM users WHERE uname = ? LIMIT 1")) { 
      $stmt->bind_param('s', $uname); // Bind "$email" to parameter.
@@ -79,7 +82,8 @@ function setUserCredentials($user_id, $username, $password) {
   $_SESSION['login_string'] = hash('sha512', $password.$user_browser);
 }
 
-function checkbrute($user_id, $mysqli) {
+function checkbrute($user_id) {
+  global $mysqli;
   // Get timestamp of current time
   $now = time();
   // All login attempts are counted from the past 2 hours. 
@@ -98,7 +102,8 @@ function checkbrute($user_id, $mysqli) {
   }
 }
 
-function login_check($mysqli) {
+function login_check() {
+   global $mysqli;
    // Check if all session variables are set
    if(isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) {
      $user_id = $_SESSION['user_id'];
@@ -137,9 +142,26 @@ function login_check($mysqli) {
    }
 }
 
-function log_event($ev, $mysqli, $dbkey = -1) {
+function log_event($ev, $dbkey = -1) {
+  global $mysqli;
   $uid = (isset( $_SESSION['user_id']))?  $_SESSION['user_id']: 0;
   $mysqli->query("INSERT INTO history (uid, type, ipaddr) VALUES ('$uid', '$ev', '" . $_SERVER['REMOTE_ADDR'] . "')");
 }
+
+/*** Load Throw Functions ****/
+
+/**
+ * Loads a throw from the database based on the throw ID number
+ */
+function loadThrow($tid) {
+    global $mysqli;
+    if ($res = $mysqli->query("SELECT * FROM throws WHERE id = {$tid} LIMIT 1")) { 
+        $row = $res->fetch_assoc();
+        return $row;
+    } else {
+        return FALSE;
+    }
+}
+
 
 ?>
