@@ -1,6 +1,6 @@
 {
-  "name" : "Celtic Cross Spread",
-  "numberOfCards" : 10,
+  "name" : "Past, Present, Future Spread",
+  "numberOfCards" : 3,
   "laytop" : 25, 
   "layside" : 50,
   "ydiff" : 20,
@@ -11,92 +11,29 @@
     {
       "name" : "position1",
       "number" : 1,
-      "title" : "What Covers You",
-      "meaning" : "The central issue or where you are presently with the situation.",
-      "top" : "this.laytop + this.chgt + this.ydiff",
-      "left" : "this.layside + this.cwdt + this.xdiff",
-      "orientation" : "upright"
-    },
-    {
-      "name" : "position2",
-      "number" : 2,
-      "title" : "What Crosses You",
-      "meaning" : "A crosswind or opposing factor to the situation",
-      "top" : "this.laytop + this.chgt + this.ydiff + ((this.chgt - this.cwdt)/2)",
-      "left" : "this.layside + this.cwdt + this.xdiff - ((this.chgt - this.cwdt)/2)",
-      "orientation" : "horizontal"
-    },
-    {
-      "name" : "position3",
-      "number" : 3,
-      "title" : "What is Beneath You",
-      "meaning" : "The foundation or basis upon which the present situation is grounded. Unconscious influences.",
-      "top" : "this.laytop + (this.chgt + this.ydiff) * 2",
-      "left" : "this.layside + this.cwdt + this.xdiff",
-      "orientation" : "upright"
-    },
-    {
-      "name" : "position4",
-      "number" : 4,
-      "title" : "What is Behind You",
-      "meaning" : "The past events immediately preceding and leading up to the situation, which are receding in influence",
+      "title" : "The Past",
+      "meaning" : "The past events that bear on this current question. The currents that have led you to the present situation.",
       "top" : "this.laytop + this.chgt + this.ydiff",
       "left" : "this.layside",
       "orientation" : "upright"
     },
     {
-      "name" : "position5",
-      "number" : 5,
-      "title" : "What Crowns You and Could Come into Being",
-      "meaning" : "Your conscious thoughts on the situation or what hover over as a potential",
-      "top" : "this.laytop",
+      "name" : "position2",
+      "number" : 2,
+      "title" : "The Present",
+      "meaning" : "Your current attitude, struggles, and/or hopes regarding the current question. Your current course.",
+      "top" : "this.laytop + this.chgt + this.ydiff",
       "left" : "this.layside + this.cwdt + this.xdiff",
       "orientation" : "upright"
     },
     {
-      "name" : "position6",
-      "number" : 6,
-      "title" : "What is Before You",
-      "meaning" : "The near future, what is soon to manifest. Unresolved issue you will have to face.",
+      "name" : "position3",
+      "number" : 3,
+      "title" : "The Future",
+      "meaning" : "The most likely outcome should you continue on the current course. Where you will end up.",
       "top" : "this.laytop + this.chgt + this.ydiff",
       "left" : "this.layside + (this.cwdt + this.xdiff) * 2",
       "orientation" : "upright"
     },
-    {
-      "name" : "position7",
-      "number" : 7,
-      "title" : "Your Attitude to the Situation",
-      "meaning" : "Where you are at presently regarding the question asked. Self-image. Inner resource to tap.",
-      "top" : "this.laytop + (this.chgt + this.ydiff) * 3",
-      "left" : "this.layside + (this.cwdt + this.xdiff) * 3",
-      "orientation" : "upright"
-    },
-    {
-      "name" : "position8",
-      "number" : 8,
-      "title" : "Your House",
-      "meaning" : "Your environment or those you live with",
-      "top" : "this.laytop + (this.chgt + this.ydiff) * 2",
-      "left" : "this.layside + (this.cwdt + this.xdiff) * 3",
-      "orientation" : "upright"
-    },
-    {
-      "name" : "position9",
-      "number" : 9,
-      "title" : "Hopes and Fears",
-      "meaning" : "Your greatest hope and/or worst fear. Guidance regarding the question. Key factor.",
-      "top" : "this.laytop + this.chgt + this.ydiff",
-      "left" : "this.layside + (this.cwdt + this.xdiff) * 3",
-      "orientation" : "upright"
-    },
-    {
-      "name" : "position10",
-      "number" : 10,
-      "title" : "The Outcome",
-      "meaning" : "The final outcome in terms of inner self, outer circumstances, or how it affects those around you.",
-      "top" : "this.laytop",
-      "left" : "this.layside + (this.cwdt + this.xdiff) * 3",
-      "orientation" : "upright"
-    }
   ]
 }
