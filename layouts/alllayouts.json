@@ -1,0 +1,12 @@
+[
+    {
+        "id": "ccs",
+        "name": "Celtic Cross Spread",
+        "jsonfile": "celticcross.json"
+    },
+    {
+        "id": "ppf",
+        "name": "Past, Present, and Future Spread",
+        "jsonfile": "pastpresfut.json"
+    }
+]
