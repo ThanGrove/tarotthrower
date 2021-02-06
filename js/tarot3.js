@@ -29,7 +29,6 @@ $(document).ready(function() {
   var dstr = getDate();
   $("#qdate").attr("value",dstr);
   $("#date-cell span.txt").text(dateToString(dstr));
-  checkLoginStatus();
   
 });
 
