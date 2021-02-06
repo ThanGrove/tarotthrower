@@ -1,7 +1,7 @@
 // Another try at a tarot thrower js rewrite
-var decksbase = './decks/';
+var decksbase = '../decks/';
 var deckJSON = decksbase + 'waite-smith/waite-smith-deck.json';
-var layoutsbase = './layouts/';
+var layoutsbase = '../layouts/';
 var layoutJSON = layoutsbase + 'celticcross.json';
 var drawnTop = 500;
 var drawnLeft = 1130;
