@@ -1,8 +1,12 @@
 // Another try at a tarot thrower js rewrite
-var decksbase = '../decks/';
+/*
 var deckJSON = decksbase + 'waite-smith/waite-smith-deck.json';
 var layoutsbase = '../layouts/';
 var layoutJSON = layoutsbase + 'celticcross.json';
+*/
+
+var sitebase = window.location.href.split('index.html')[0];
+var decksbase = sitebase + '/decks/'.replace('//decks', '/decks');
 var drawnTop = 500;
 var drawnLeft = 1130;
 
@@ -14,14 +18,10 @@ $(document).ready(function() {
   drawnLeft = $('#drawn').offset().left;
   
   // Get Deck and Layout information
-  $.getJSON(deckJSON, '', function(json) { // retrieve JSON defining Deck
-    Deck.init(json);                       // initialize the Deck
-    $.getJSON(layoutJSON, '', function(json) {  // retrieve JSON defining Layout
-      Layout.init(json);                        // initialize Layout
-      Layout.setPositionOutlines();
-    }).error(function(jqXHR, textStatus, errorThrown) {console.info("Error loading the layout from " + layoutJSON);});
-  }).error(function(jqXHR, textStatus, errorThrown) {console.info("Error loading the deck from " + deckJSON);});
-  
+  Deck.init(wsdeckinfo);                       // initialize the Deck
+  Layout.init(cclayout);                        // initialize Layout
+  Layout.setPositionOutlines();
+
   // Set the event to fade out intro when showing
   $('#intro, #main').click(function() { $('#intro').fadeOut(); });
   
@@ -32,41 +32,6 @@ $(document).ready(function() {
   checkLoginStatus();
   
 });
-
-// Function called from div#savelink <a> link appears when layout is finished
-// see end of Layout.placeCard ~line 245
-function saveThrow() {
-  var iels = $('#datastore input.tdata');
-  // Combine throw data into a single field
-  var del = $('#datastore').after('<input type="hidden" name="jsondata" />').next();
-  var tjson = { positions: [] };
-  iels.each(function() {
-    var el = $(this);
-    var elname = el.attr('name');
-    var elval = el.attr('value');
-    if (elname.indexOf('pos') == 0) {
-      var pn = elname.substr(3);
-      if (!isNaN(pn)) {
-        tjson.positions[parseInt(pn)] = elval;
-      } else {
-        console.log("Error in assigning card index to json in tarot3.js!");
-      }
-    } else {
-      tjson[elname] = elval;
-    }
-  });
-  tjson = JSON.stringify(tjson);
-  console.info(tjson);
-  // Send form info as ajax call
-  $.ajax({
-    url: "savedata.php",
-    type: "POST",
-    data: "json=" + tjson,
-    success: function(resp) {
-      console.info(resp);
-    }
-  });
-}
 
 // the Deck Object 
 var Deck = {

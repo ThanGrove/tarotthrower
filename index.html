@@ -4,13 +4,14 @@
     <title>Tarot Thrower</title>
     <link href="css/tarot.css" rel="stylesheet" media="all" />
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.17.min.js"></script>
-		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
-    <script type="text/javascript" src="js/MRG32k3a.js" ></script> <!-- random number generator see http://baagoe.org/en/wiki/Better_random_numbers_for_javascript -->
-    <!--<script type="text/javascript" src="js/seedrandom.js" ></script>-->
-		<script type="text/javascript" src="js/tarotui.js" ></script>
-		<script type="text/javascript" src="js/tarot3.js" ></script>
-		<script type="text/javascript" src="js/sha512.js" ></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.17.min.js"></script>
+	<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+	<script type="text/javascript" src="js/MRG32k3a.js" ></script> <!-- random number generator see http://baagoe.org/en/wiki/Better_random_numbers_for_javascript -->
+	<script type="text/javascript" src="decks/waite-smith/waite-smith-deck.js" ></script>
+	<script type="text/javascript" src="layouts/celticcross.js" ></script>
+	<script type="text/javascript" src="js/tarotui.js" ></script>
+	<script type="text/javascript" src="js/tarot3.js" ></script>
+	<script type="text/javascript" src="js/sha512.js" ></script>
     
 <!-- Files for zoomer jquery plugin 
 <script type="text/JavaScript" src="js/zoomer.js"></script>-->
@@ -18,7 +19,7 @@
   </head>
   <body>
 	<div id="icons">
-		<a href="/" title="Back to Than's Web Page"><img src="images/home.png"/></a>
+		<a href="https://thangrove.github.io/" title="Back to Than's Github Page"><img src="images/home.png"/></a>
 		<a onclick="javascript: showIntro();" title="Tarot Thrower Help" style="link"><img src="images/help-wht-circle.png" class="help-img" /></a>
 	</div> <!-- End #icons -->
 	<div id="main">
@@ -52,18 +53,7 @@
 	    <div id="canvas">
 	    </div>
 		<div id="readings">
-			<div id="login"><a onclick="javascript: toggleLoginForm();">Login</a></div>
 		  	<div id="instructions">
-			 <!--<p>Welcome to Than&rsquo;s Tarot Thrower. This page will help you to do a Tarot &ldquo;throw&rdquo;, or spread, in
-			    response to a question of your choice. The default deck used is the <a href="http://en.wikipedia.org/wiki/Rider-Waite_tarot_deck"
-					target="_blank">Waite-Smith tarot deck</a>, also known as the Rider-Waite tarot deck. The default layout for the spread is
-			    the <a href="http://www.learntarot.com/ccross.htm"
-					target="_blank">Celtic Cross Spread</a>. (In the future, I hope to add other decks and layouts.) Initially, one poses a question and
-					then lays out the cards. The interpretation of the cards should address one&rsquo;s question. It is best to ask more
-					general questions or seek advice from the tarot, as it is usually difficult to interpret throws for questions seeking
-					a specific type of answer, such as yes or no and so forth.
-			 </p>-->
-			 
   			 <div style="text-align: center;">
   				 <h2 class="title">Welcome to the Tarot Thrower</h2>
   				 <p>Enter your question or concern in the space below. Then, press the begin button:</p>
